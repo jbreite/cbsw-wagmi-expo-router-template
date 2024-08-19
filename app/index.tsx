@@ -12,7 +12,7 @@ export default function Index() {
 
   return (
     <View style={styles.conatiner}>
-      <View style={{ flex: 1 }}>
+      <View style={{ gap: 12 }}>
         <Text style={styles.title}>
           CBSW with WAGMI and Expo Router Template{" "}
         </Text>
@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
     padding: 24,
+    justifyContent: "center",
+    gap: 24,
   },
   title: {
     fontSize: 32,
