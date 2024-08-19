@@ -8,6 +8,8 @@ import { handleResponse } from "@mobile-wallet-protocol/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { config } from "@/config";
 import { useAccount, WagmiProvider } from "wagmi";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +19,7 @@ function InitialLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+  const { top } = useSafeAreaInsets();
 
   const { isConnected, status } = useAccount();
 
@@ -37,8 +40,6 @@ function InitialLayout() {
     if (status === "connecting" || status === "reconnecting") return;
 
     const inAuthGroup = segments[0] === "(auth)";
-    console.log("🪨 ~ useEffect ~ inAuthGroup", inAuthGroup);
-    console.log("🪨 ~ useEffect ~ isConnected", isConnected);
 
     if (isConnected && !inAuthGroup) {
       // Bring the user inside the auth group
@@ -68,8 +69,15 @@ function InitialLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" />
+    <Stack
+      screenOptions={{
+        contentStyle: { backgroundColor: "white", marginTop: top },
+      }}
+    >
+      <Stack.Screen
+        name="index"
+        options={{ headerShown: false }} //Feel free to control the animation here
+      />
       <Stack.Screen
         name="(auth)"
         options={{
@@ -82,10 +90,12 @@ function InitialLayout() {
 
 export default function RootLayout() {
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <InitialLayout />
-      </QueryClientProvider>
-    </WagmiProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <InitialLayout />
+        </QueryClientProvider>
+      </WagmiProvider>
+    </GestureHandlerRootView>
   );
 }
