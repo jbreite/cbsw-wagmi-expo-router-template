@@ -52,12 +52,12 @@ export default function WalletAction(props: SectionProps) {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "#00000012",
+    borderColor: "#E5E5E5",
     borderRadius: 16,
     borderWidth: 1,
     padding: 8,
     flexDirection: "column",
-    gap: 8,
+    gap: 12,
   },
   header: {
     flexDirection: "row",

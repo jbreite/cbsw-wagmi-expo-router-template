@@ -35,27 +35,10 @@ export default function Index() {
 
   return (
     <View style={styles.conatiner}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingBottom: 12,
-          borderBottomWidth: 1, // Add this to make the border visible
-          borderBottomColor: "#000", // Changed from bottomBorderColor
-          marginHorizontal: -PADDING_HORIZONTAL,
-          paddingHorizontal: PADDING_HORIZONTAL,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 8,
-          }}
-        >
+      <View style={styles.header}>
+        <View style={styles.headerTextConatiner}>
           <CoinbaseWalletLogo fill="#000" />
-          <Text style={{ fontSize: 24, fontWeight: "bold" }}>Smart Wallet</Text>
+          <Text style={styles.headerFont}>Smart Wallet</Text>
         </View>
         <CButton
           label="Disconnect"
@@ -70,7 +53,7 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 24, gap: 24 }}
       >
-        <CopyAddress address={address} />
+        {address && <CopyAddress address={address} />}
         <WalletAction
           title="Sign Message"
           result={signMessageHash ?? signMessageError}
@@ -95,4 +78,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: PADDING_HORIZONTAL,
   },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#E5E5E5",
+    marginHorizontal: -PADDING_HORIZONTAL,
+    paddingHorizontal: PADDING_HORIZONTAL,
+  },
+  headerTextConatiner: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  headerFont: { fontSize: 24, fontWeight: "bold" },
 });
