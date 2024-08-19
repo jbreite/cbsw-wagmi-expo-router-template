@@ -1,11 +1,13 @@
 import CButton from "@/components/Button";
+import { CoinbaseWalletLogo } from "@/components/CoinbaseWalletLogo";
 import CopyAddress from "@/components/CopyAddress";
 import WalletAction from "@/components/WalletAction";
-import { shortenAddress } from "@/utils/ui";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 import { useCapabilities } from "wagmi/experimental";
+
+const PADDING_HORIZONTAL = 16;
 
 export default function Index() {
   const { disconnect, isPending: isPendingDisconnect } = useDisconnect();
@@ -37,14 +39,30 @@ export default function Index() {
         style={{
           flexDirection: "row",
           alignItems: "center",
+          justifyContent: "space-between",
+          paddingBottom: 12,
+          borderBottomWidth: 1, // Add this to make the border visible
+          borderBottomColor: "#000", // Changed from bottomBorderColor
+          marginHorizontal: -PADDING_HORIZONTAL,
+          paddingHorizontal: PADDING_HORIZONTAL,
         }}
       >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <CoinbaseWalletLogo fill="#000" />
+          <Text style={{ fontSize: 24, fontWeight: "bold" }}>Smart Wallet</Text>
+        </View>
         <CButton
           label="Disconnect"
           isLoading={isPendingDisconnect}
           onPress={handleDisconnect}
           disabled={isPendingDisconnect}
-          style={{ flex: 1 }}
+          style={{ flex: 3 / 4, paddingVertical: 12 }}
         />
       </View>
 
@@ -75,6 +93,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
-    padding: 24,
+    padding: PADDING_HORIZONTAL,
   },
 });
