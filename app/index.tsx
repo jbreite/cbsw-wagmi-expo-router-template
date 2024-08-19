@@ -13,9 +13,7 @@ export default function Index() {
   return (
     <View style={styles.conatiner}>
       <View style={{ gap: 12 }}>
-        <Text style={styles.title}>
-          CBSW with WAGMI and Expo Router Template{" "}
-        </Text>
+        <Text style={styles.title}>CBSW with WAGMI and Expo Router</Text>
         <Text style={styles.subHeading}>
           Connect or create a wallet to see smart wallet capabilities
         </Text>
@@ -23,6 +21,7 @@ export default function Index() {
       <CButton
         label="Connect Wallet"
         isLoading={isPending}
+        isLoadingText="Connecting..."
         onPress={handleConnect}
         disabled={isPending}
       />
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: "semibold",
+    fontWeight: "bold",
     textAlign: "center",
   },
   subHeading: {

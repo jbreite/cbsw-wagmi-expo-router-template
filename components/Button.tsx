@@ -13,12 +13,15 @@ export default function CButton({
   label,
   disabled,
   isLoading,
+  isLoadingText,
+  style,
 }: {
   onPress: () => void;
   label: string;
   style?: ViewStyle;
   disabled?: boolean;
   isLoading?: boolean;
+  isLoadingText?: string;
 }) {
   const isActive = useSharedValue(false);
   const { triggerImpact, ImpactFeedbackStyle } = useHaptics();
@@ -48,10 +51,10 @@ export default function CButton({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       disabled={disabled}
-      style={[styles.button, rButtonStyle]}
+      style={[styles.button, rButtonStyle, style]}
     >
       {isLoading && <ActivityIndicator size="small" color="white" />}
-      <Text style={styles.buttonText}>{label}</Text>
+      <Text style={styles.buttonText}>{isLoading ? isLoadingText : label}</Text>
     </AnimatedPressable>
   );
 }
@@ -63,9 +66,9 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
     flexDirection: "row",
     gap: 8,
+    // width: "100%",
   },
   buttonText: {
     color: "white",

@@ -8,7 +8,6 @@ import { handleResponse } from "@mobile-wallet-protocol/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { config } from "@/config";
 import { useAccount, WagmiProvider } from "wagmi";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const queryClient = new QueryClient();
@@ -19,7 +18,6 @@ function InitialLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
-  const { top } = useSafeAreaInsets();
 
   const { isConnected, status } = useAccount();
 
@@ -71,7 +69,7 @@ function InitialLayout() {
   return (
     <Stack
       screenOptions={{
-        contentStyle: { backgroundColor: "white", marginTop: top },
+        contentStyle: { backgroundColor: "white" },
       }}
     >
       <Stack.Screen

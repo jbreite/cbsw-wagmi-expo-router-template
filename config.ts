@@ -5,13 +5,13 @@ import {
   Wallets,
 } from "@mobile-wallet-protocol/wagmi-connectors";
 import { http, createConfig } from "wagmi";
-import { optimism } from "wagmi/chains";
+import { base } from "wagmi/chains";
 import * as Linking from "expo-linking";
 
 const PREFIX_URL = Linking.createURL("/");
 
 export const config = createConfig({
-  chains: [optimism],
+  chains: [base],
   connectors: [
     createConnectorFromWallet({
       metadata: {
@@ -22,7 +22,7 @@ export const config = createConfig({
     }),
   ],
   transports: {
-    [optimism.id]: http(),
+    [base.id]: http(),
   },
 });
 
