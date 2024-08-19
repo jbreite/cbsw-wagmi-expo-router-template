@@ -1,4 +1,4 @@
-# Template for an onchain app, utilizing the Coinbase Smart Wallet, WAGMI, and EXPO router.
+# Template for an onchain app, utilizing the Coinbase Smart Wallet, WAGMI, and Expo router.
 
 Huge thanks to the Coinbase team who created ths [Smart Wallet Expo Example](https://github.com/MobileWalletProtocol/smart-wallet-expo-example).
 
