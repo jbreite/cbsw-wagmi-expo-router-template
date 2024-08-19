@@ -1,5 +1,6 @@
 import CButton from "@/components/Button";
 import { CoinbaseWalletLogo } from "@/components/CoinbaseWalletLogo";
+import CoinbaseWalletLogoAndText from "@/components/CoinbaseWalletLogoAndText";
 import CopyAddress from "@/components/CopyAddress";
 import WalletAction from "@/components/WalletAction";
 import { StyleSheet, Text, View } from "react-native";
@@ -12,7 +13,6 @@ const PADDING_HORIZONTAL = 16;
 export default function Index() {
   const { disconnect, isPending: isPendingDisconnect } = useDisconnect();
   const { address } = useAccount();
-  console.log("address", address);
 
   const handleDisconnect = () => {
     disconnect();
@@ -22,8 +22,6 @@ export default function Index() {
     data: signMessageHash,
     error: signMessageError,
     signMessage,
-    reset,
-    isPending: isPendingMessage,
   } = useSignMessage();
 
   const handleSignMessage = () => {
@@ -36,10 +34,7 @@ export default function Index() {
   return (
     <View style={styles.conatiner}>
       <View style={styles.header}>
-        <View style={styles.headerTextConatiner}>
-          <CoinbaseWalletLogo fill="#000" />
-          <Text style={styles.headerFont}>Smart Wallet</Text>
-        </View>
+        <CoinbaseWalletLogoAndText />
         <CButton
           label="Disconnect"
           isLoading={isPendingDisconnect}
@@ -51,7 +46,7 @@ export default function Index() {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 24, gap: 24 }}
+        contentContainerStyle={{ paddingVertical: 24, gap: 24 }}
       >
         {address && <CopyAddress address={address} />}
         <WalletAction

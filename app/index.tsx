@@ -1,21 +1,25 @@
 import CButton from "@/components/Button";
+import CoinbaseWalletLogoAndText from "@/components/CoinbaseWalletLogoAndText";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useConnect, useDisconnect } from "wagmi";
 
 export default function Index() {
   const { connect, connectors, isPending } = useConnect();
-  const { disconnect } = useDisconnect();
+  const { top, bottom } = useSafeAreaInsets();
 
   const handleConnect = () => {
     connect({ connector: connectors[0] });
   };
 
   return (
-    <View style={styles.conatiner}>
-      <View style={{ gap: 12 }}>
-        <Text style={styles.title}>CBSW with WAGMI and Expo Router</Text>
+    <View style={[styles.conatiner, { marginTop: top, marginBottom: bottom }]}>
+      <View />
+      <View style={{ gap: 12, alignItems: "center" }}>
+        <CoinbaseWalletLogoAndText />
         <Text style={styles.subHeading}>
-          Connect or create a wallet to see smart wallet capabilities
+          Template for WAGMI and Expo Router. Connect or create a wallet to use
+          a smart wallet.
         </Text>
       </View>
       <CButton
@@ -33,12 +37,12 @@ const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
     padding: 24,
-    justifyContent: "center",
+    justifyContent: "space-between",
     gap: 24,
   },
   title: {
-    fontSize: 32,
-    fontWeight: "bold",
+    fontSize: 20,
+    fontWeight: "semibold",
     textAlign: "center",
   },
   subHeading: {

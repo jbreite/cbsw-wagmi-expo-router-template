@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 8,
     flexDirection: "column",
-    gap: 12,
+    gap: 8,
   },
   header: {
     flexDirection: "row",
