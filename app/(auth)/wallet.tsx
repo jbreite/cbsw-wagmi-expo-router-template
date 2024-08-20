@@ -1,5 +1,4 @@
-import CButton from "@/components/Button";
-import { CoinbaseWalletLogo } from "@/components/CoinbaseWalletLogo";
+import Button from "@/components/Button";
 import CoinbaseWalletLogoAndText from "@/components/CoinbaseWalletLogoAndText";
 import CopyAddress from "@/components/CopyAddress";
 import WalletAction from "@/components/WalletAction";
@@ -35,7 +34,7 @@ export default function Index() {
     <View style={styles.conatiner}>
       <View style={styles.header}>
         <CoinbaseWalletLogoAndText />
-        <CButton
+        <Button
           label="Disconnect"
           isLoading={isPendingDisconnect}
           onPress={handleDisconnect}

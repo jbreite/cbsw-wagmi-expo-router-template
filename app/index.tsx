@@ -1,8 +1,8 @@
-import CButton from "@/components/Button";
+import Button from "@/components/Button";
 import CoinbaseWalletLogoAndText from "@/components/CoinbaseWalletLogoAndText";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useConnect, useDisconnect } from "wagmi";
+import { useConnect } from "wagmi";
 
 export default function Index() {
   const { connect, connectors, isPending } = useConnect();
@@ -22,7 +22,7 @@ export default function Index() {
           a smart wallet.
         </Text>
       </View>
-      <CButton
+      <Button
         label="Connect Wallet"
         isLoading={isPending}
         isLoadingText="Connecting..."

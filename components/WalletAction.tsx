@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import CButton from "./Button";
+import Button from "./Button";
 
 type SectionProps = {
   title: string;
@@ -15,7 +15,7 @@ export default function WalletAction(props: SectionProps) {
       <View style={styles.header}>
         <Text style={{ fontSize: 18, fontWeight: "500" }}>{props.title}</Text>
         {props.onPress && (
-          <CButton
+          <Button
             label={props.buttonLabel || "Submit"}
             onPress={props.onPress}
           />

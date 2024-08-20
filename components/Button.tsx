@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { StyleSheet, Text, ViewStyle, ActivityIndicator } from "react-native";
 import {
   useAnimatedStyle,
@@ -8,7 +8,7 @@ import {
 import useHaptics from "@/hooks/useHaptics";
 import { AnimatedPressable } from "./Animated/AnimatedPressable";
 
-export default function CButton({
+export default function Button({
   onPress,
   label,
   disabled,
